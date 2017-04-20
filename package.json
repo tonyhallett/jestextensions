@@ -1,0 +1,23 @@
+{
+  "name": "jestextensions",
+  "version": "1.0.0",
+  "description": "extensions for jest",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tonyhallett/jestextensions.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tonyhallett/jestextensions/issues"
+  },
+  "homepage": "https://github.com/tonyhallett/jestextensions#readme",
+  "devDependencies": {
+    "jest": "^19.0.2"
+  }
+}
