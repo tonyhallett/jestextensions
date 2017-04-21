@@ -3,20 +3,18 @@ if (!Array.isArray) {
         return Object.prototype.toString.call(arg) === '[object Array]';
     };
 }
-function parameterizedIt(focused, callArguments) {
-    var args = Array.from(callArguments);
-    var description = args[0];
+function parameterizedIt(focused, description,args) {
     if (!this.__calls) {
         this.__calls = [];
     }
-    this.__calls[this.__calls.length] = { focused: focused, description: description, args: args.slice(1) };
+    this.__calls[this.__calls.length] = { focused: focused, description: description, args: args };
 }
 
-function pit() {
-    parameterizedIt.call(this, false, arguments);
+function pit(description, ...args) {
+    parameterizedIt.call(this, false, description,args);
 }
-function fpit() {
-    parameterizedIt.call(this, true, arguments);
+function fpit(description, ...args) {
+    parameterizedIt.call(this, true, description, args);
 }
 
 function pits(cb) {
@@ -31,8 +29,8 @@ function pits(cb) {
         }
 
         focusedCalls.forEach(call => {
-            it(call.description, () => {
-                cb.apply(this, call.args);
+            it(call.description, (done) => {
+                cb.apply(this, call.args.concat(done));
             });
         });
         this.__calls = [];
@@ -41,8 +39,8 @@ function pits(cb) {
 
 function its(itDetails, test) {
     itDetails.forEach(itDetail => {
-        it(itDetail.description, () => {
-            test.apply(this, itDetail.arguments);
+        it(itDetail.description, (done) => {
+            test.apply(this, itDetail.arguments.concat(done));
         });
     });
 }

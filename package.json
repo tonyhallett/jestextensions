@@ -1,6 +1,6 @@
 {
   "name": "jestextensions",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "extensions for jest",
   "main": "index.js",
   "scripts": {
@@ -19,5 +19,11 @@
   "homepage": "https://github.com/tonyhallett/jestextensions#readme",
   "devDependencies": {
     "jest": "^19.0.2"
+  },
+  "dependencies": {
+    "@types/jest": "^19.2.2"
+  },
+  "jest": {
+    "testEnvironment": "node"
+    }
   }
-}
